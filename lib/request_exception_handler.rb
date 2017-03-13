@@ -104,7 +104,7 @@ ActionController::Base.send :include, RequestExceptionHandler
 
 # NOTE: Rails "parameters-parser" monkey patching follows :
 
-if defined? ActionDispatch::ParamsParser::ParseError # Rails 4.x
+if (defined? ActionDispatch::ParamsParser) && ActionDispatch::ParamsParser.const_defined?('ParseError', false) # Rails 4.x
 
   class ActionDispatch::ParamsParser
 
